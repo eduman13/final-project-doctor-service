@@ -1,5 +1,6 @@
 package com.ironhack.finalprojectdoctorservice.model.dto;
 
+import com.ironhack.finalprojectdoctorservice.model.Address;
 import com.ironhack.finalprojectdoctorservice.model.Doctor;
 
 import java.time.LocalDate;
@@ -93,5 +94,20 @@ public class DoctorDTO {
             doctorDTO.setPortal(doctor.getAddress().getPortal());
             doctorDTO.setNumber(doctor.getAddress().getNumber());
         return doctorDTO;
+    }
+
+    public static Doctor doctorDTOToDoctor(DoctorDTO doctorDTO) {
+        Doctor doctor = new Doctor();
+            doctor.setId(doctorDTO.getId());
+            doctor.setName(doctorDTO.getName());
+            doctor.setSurnames(doctorDTO.getSurnames());
+            doctor.setSchoolNumber(doctorDTO.getSchoolNumber());
+            doctor.setBirthday(doctorDTO.getBirthday());
+        Address address = new Address();
+            address.setStreet(doctorDTO.getStreet());
+            address.setPortal(doctorDTO.getPortal());
+            address.setNumber(doctorDTO.getNumber());
+            doctor.setAddress(address);
+        return doctor;
     }
 }
